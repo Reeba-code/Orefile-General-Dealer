@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OREFILE GENERAL STORE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e0f7e4; /* Light pastel green background */
+            font-family: 'Quicksand', sans-serif; /* Clean and rounded font */
+            color: #333; /* Soft dark gray for text */
+            margin: 0;
+            padding: 0;
+        }
+
+        .store-name {
+            font-family: 'oblique', monospace; /* Cute, handwritten font */
+            font-size: 36px;
+            color: #4caf50; /* Medium green color */
+            text-align: center;
+            padding: 20px;
+            background-color: #f0fff4; /* Light pastel cream background */
+            border-bottom: 3px solid #a5d6a7; /* Light green border */
+            margin-bottom: 20px;
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f0fff4; /* Light pastel cream background */
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            border-radius: 10px; /* Rounded corners */
+            margin: 0 20px;
+        }
+
+        .nav-items {
+            display: flex;
+            align-items: center;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .search-box {
+            font-family: 'Quicksand', sans-serif;
+            padding: 5px 10px;
+            border: 1px solid #a5d6a7; /* Light green border */
+            border-radius: 20px; /* Rounded corners */
+            margin-right: 10px;
+            outline: none;
+        }
+
+        .search-btn {
+            padding: 5px 15px;
+            background-color: #4caf50; /* Medium green color */
+            color: #fff;
+            border: none;
+            border-radius: 20px; /* Rounded corners */
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .search-btn:hover {
+            background-color: #81c784; /* Lighter green on hover */
+        }
+
+        .menu {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            background-color: #f0fff4; /* Light pastel cream background */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        .menu-item {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 16px;
+            color: #555; /* Soft gray */
+            text-transform: uppercase;
+            margin: 0 15px;
+            transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            color: #4caf50; /* Medium green color on hover */
+            transform: scale(1.1); /* Slightly enlarge on hover */
+        }
+
+        .ig_content {
+            background-color: #f0fff4; /* Light pastel cream background */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px;
+            margin: 40px 20px 20px 20px; /* Add margin to create space above */
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        }
+
+        .ig_button {
+            display: inline-block;
+            background-color: #4caf50; /* Medium green */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px; /* Rounded corners */
+            cursor: pointer;
+            border: none;
+            font-family: 'Quicksand', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .ig_button:hover {
+            background-color: #81c784; /* Lighter green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="store-name">OREFILE GENERAL STORE</div>
+
+    <nav class="navbar">
+        <div class="nav">
+            <img src="general_store.png" class="brand-logo" alt="LOGO">
+            <div class="nav-items">
+                <div class="search">
+                    <input type="text" class="search-box" placeholder="Search brand, product">
+                    <button class="search-btn">Search</button>
+                </div>
+                <a href="#"><img src="img/user.png" alt="User"></a>
+                <a href="#"><img src="img/cart.png" alt="Cart"></a>
+            </div>
+        </div>
+    </nav>
+
+    <ul class="menu">
+        <li class="menu-item">Household</li>
+        <li class="menu-item">Fruits and Veg</li>
+        <li class="menu-item">Dairy Products</li>
+        <li class="menu-item">Toiletries</li>
+        <li class="menu-item">Beverage</li>
+    </ul>
+
+    <div class="ig_content">
+        <p>Our stores are now available on WhatsApp for chat only !!</p>
+        <button class="ig_button">WhatsApp Now</button>
+    </div>
+
+    <script type="text/javascript">
+        /* Add your JS code here */
+    </script>
+</body>
+</html>
