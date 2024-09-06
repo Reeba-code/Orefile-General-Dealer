@@ -1,0 +1,77 @@
+/*
+-- Query: SELECT * FROM tuckshop.products
+LIMIT 0, 1000
+
+-- Date: 2024-09-04 09:08
+*/
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (1,'Bread','Sasko','White bread','Food','g',18);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (2,'Eggs','Lunds','6 large eggs','Food','g',27);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (3,'Baking powder','Royal','Sachet','Food','g',24);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (4,'Baked beans','Koo','Baked beans in tomato sauce','Food','g',24);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (5,'Chicken','County Fair','Frozen chicked mixed portion','Food','g',45);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (6,'Curry spice','Rajah','Sachect of curry','Food','g',15);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (7,'Maize meal','Super white','Maize meal 2kg','Food','kg',65);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (8,'Mayonnaise','Crosse & Blackwell','Tangy mayonnaise','Food','g',18);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (9,'Cooking oil','Excella','Cooking oil 2L','Food','L',42);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (10,'Flour','Golden Cloud','Flour 2.5 kg','Food','kg',38);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (11,'Noodles','Kellogg\'s','Bigger pack 70g x 8','Food','g',23);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (12,'Tomato sauce','Heinz','Tomato sauce 750ml','Food','ml',19);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (13,'Milk','Long life','Full cream fresh milk 2L','Food','L',31);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (14,'Fatcakes',NULL,'Fatcakes each','Food',NULL,1.5);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (15,'Rice','Spekko','Rice 2kg','Food','kg',48);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (16,'Sugar','Selati','Sugar 2kg','Food','kg',23);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (17,'Tea','Teeco','100 Tagless tea bags','Food','g',15);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (18,'Tin fish','Lucky Star','Pilchards in sweet chilli sauce','Food','g',18);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (19,'Salt','Cerebos','1kg Iodated table salt','Food','kg',19);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (20,'Potatoes','Class 1','1kg potatoes','Food','kg',33);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (21,'Tomatoes','Class 1','1kg tomatoes','Food','kg',25);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (22,'Spinach',NULL,'Spinach single bunch','Food',NULL,25);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (23,'Potato chips','Lay\'s','Salted potato chips','Food','g',25);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (24,'Achaar',NULL,'Mango achaar','Food','L',16);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (25,'Magerine','Rama','70% fat spread 125g','Food','g',25);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (26,'Russians','Eskort','500g russians','Food','g',65);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (27,'Beef cubes','Knorrox','Chilli beef flavour 12 x 10g','Food','g',20);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (28,'Soup sachet','Knorr','50g soup sachet','Food','g',15);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (29,'Black pepper','Robertsons','7g sachet','Food','g',2);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (30,'Mixed veg','McCain','1kg frozen mixed veg','Food','kg',25);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (31,'Custard','First Choice','1L Custard','Food','L',29);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (32,'Yoghurt','Parmalat','6 x 150 g yoghurt','Food','g',22);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (33,'Buns','Sasko','6 x buns','Food','g',18);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (34,'Vinegar','Wigson','750 ml white vinegar','Food','ml',25);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (35,'Samp','Iwisa','2.5kg Samp','Food','kg',45);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (36,'Chicken livers','Country range','250g chicken livers','Food','g',25);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (37,'Chicken feet','Goldi chicken','1 kg cleaned feet','Food','kg',29);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (38,'Beef mince',NULL,'3.5kg beef mince','Food','kg',35);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (39,'Beef bones',NULL,'5kg beef bones','Food','kg',32);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (40,'Wors','Dorsland','4kg wors','Food','kg',37);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (41,'Juice','Cappy','Cranberry juice 1.25L','Beverages','L',18);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (42,'Juice','Cappy','Mango juice 1.25L','Beverages','L',18);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (43,'Juice','Cappy','Orange juice 1.25L','Beverages','L',18);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (44,'Soft drink','Kingsley','Cola 2L','Beverages','L',16);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (45,'Soft drink','Coca cola','Spar letta 2L','Beverages','L',21);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (46,'Soft drink','Coca cola','Sprite 2L','Beverages','L',27);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (47,'Juice','Cappy','Tropical juice 1.25L','Beverages','L',18);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (48,'Soft drink','Coca cola','Lemon  twist 2L','Beverages','L',24);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (49,'Soft drink','Twizza','Cola 2L','Beverages','L',11);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (50,'Energy drink','Red bull','Red bull original 250ml','Beverages','ml',18);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (51,'Energy drink','Prime','Prime blue raspberry330ml','Beverages','ml',16);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (52,'Energy drink','Monster','Monster original 500ml','Beverages','ml',19);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (53,'Energy drink','Boost','Boost sour cherry','Beverages','ml',15);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (82,'Energy drink','Energade','Energade original 500ml','Beverages','ml',17);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (83,'Energy drink','Hustle','Hustle 500ml','Beverages','ml',16);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (84,'Energy drink','Celcius ','Celcius 500ml','Beverages','ml',23);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (85,'Alkaline water','PH','Alkaline water 1L','Beverages','L',15);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (86,'Still water','Pump','Still water 750ml','Beverages','ml',18);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (87,'Soft drink','Coca cola','Coke 2L','Beverages','L',27.99);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (88,'Pot scourer',NULL,'Price per pot scourer','Household',NULL,6.99);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (89,'Sponge scourer',NULL,'Price per sponge scourer','Household',NULL,5.99);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (90,'Dish washing cloth',NULL,'Price per washing cloth','Household',NULL,12.99);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (91,'Washing liquid','Sunlight','Dish washing liquid 750ml','Household','ml',32);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (92,'Bowl',NULL,'Eating bowl blue','Household',NULL,12);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (93,'Bathing basin','Samarth','Bathing basin pink','Household',NULL,52);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (94,'Bleach','Miracle mom','Bleach 750ml','Household','ml',22);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (95,'Bleach','Jik','Bleach 750ml','Household','ml',25);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (96,'Cup',NULL,'Enamel cup','Household',NULL,11);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (97,'Pot set','Hart','Cooking pots set','Household',NULL,220);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (98,'Soap','Sunlight','Bar soap','Household','g',15);
+INSERT INTO `` (`ProdID`,`ProdName`,`ProdBrand`,`Description`,`Category`,`Unit`,`Price`) VALUES (99,'Coffee mugg',NULL,'White coffee mugg','Household',NULL,14);
