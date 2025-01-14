@@ -1,4 +1,4 @@
-p[<?php
+<?php
 session_start(); 
 include 'config.php'; 
 include 'components/connect.php'; 
@@ -61,7 +61,7 @@ include 'components/connect.php';
             background-color: #9a1e1e;
         }
 
-        /* Mobile styles */
+      
         @media only screen and (max-width: 768px) {
             .top-bar .top-bar-section {
                 display: none;
@@ -76,11 +76,11 @@ include 'components/connect.php';
             }
 
             .top-bar .toggle-topbar {
-                display: block; /
+                display: block; 
             }
         }
 
-/* Product Grid */
+
 .product-grid {
     display: flex;
     flex-wrap: wrap;
@@ -124,7 +124,7 @@ include 'components/connect.php';
 
 /* Add to Cart button */
 .add-to-cart-btn {
-    background-color: #003300; /* Button color */
+    background-color: #003300;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -132,15 +132,15 @@ include 'components/connect.php';
     font-size: 1em;
     border-radius: 4px;
     transition: background-color 0.3s ease;
-    text-decoration: none; /* Remove underline */
+    text-decoration: none; 
 }
 
-/* Button hover effect */
+
 .add-to-cart-btn:hover {
-    background-color: #9a1e1e; /* Darken button on hover */
+    background-color: #9a1e1e; 
 }
 
-/* Notification */
+
 .notification {
     position: fixed;
     top: 10px;
@@ -195,7 +195,7 @@ include 'components/connect.php';
     }
 }
 
-   /* Notification */
+ 
    .notification {
             position: fixed;
             top: 100px;
