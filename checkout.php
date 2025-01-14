@@ -7,9 +7,7 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-
 $total = 0;
-
 
 if (isset($_POST['update_cart'])) {
     if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
@@ -26,7 +24,6 @@ if (isset($_POST['update_cart'])) {
     exit();  
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order'])) {
     $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
     $number = filter_var($_POST['number'], FILTER_SANITIZE_STRING);
@@ -39,46 +36,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order'])) {
                filter_var($_POST['country'], FILTER_SANITIZE_STRING) .' - '. 
                filter_var($_POST['pin_code'], FILTER_SANITIZE_STRING);
     
-   
-    $user_id = $_SESSION['user_id']; // Example; ensure you have the user ID in the session
-
+    $user_id = $_SESSION['user_id'];
 
     if (!empty($_SESSION['cart'])) {
-        // Insert order into the orders table
         $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, address, total_products, total_price) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
-        
-       
         $total_products = array_sum($_SESSION['cart']);
         $total_price = 0; 
-
         $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $total_price]);
-
-     
         $order_id = $conn->lastInsertId();
 
-       
         foreach ($_SESSION['cart'] as $product_id => $quantity) {
             $result = $mysqli->query("SELECT price FROM products WHERE id = $product_id");
             if ($result) {
                 $product = $result->fetch_object();
                 $cost = $product->price * $quantity;
-
-                // Insert each item into the order_items table
                 $stmt = $mysqli->prepare("INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)");
                 $stmt->bind_param('iiid', $order_id, $product_id, $quantity, $product->price);
                 $stmt->execute();
-                $total_price += $cost; // Accumulate total price
+                $total_price += $cost;
             }
         }
 
-      
         $update_order = $conn->prepare("UPDATE orders SET total_price = ? WHERE id = ?");
         $update_order->execute([$total_price, $order_id]);
-
-    
         unset($_SESSION['cart']);
-
-     
         header("Location: payment.php");
         exit();
     } else {
@@ -311,114 +292,76 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order'])) {
         echo '</tr>';
 
         foreach($_SESSION['cart'] as $product_id => $quantity) {
-            $result = $mysqli->query("SELECT product_code, product_name, price FROM products WHERE id = ".$product_id);
-            if($result) {
-                while($obj = $result->fetch_object()) {
-                    $cost = $obj->price * $quantity;
-                    $total += $cost;
-                    echo '<tr>';
-                    echo '<td>'.$obj->product_code.'</td>';
-                    echo '<td>'.$obj->product_name.'</td>';
-                    echo '<td>'.$quantity.'</td>';
-                    echo '<td>'.$cost.'</td>';
-                    echo '</tr>';
-                }
-            }
-        }
+            $result = $mysqli->query("SELECT product_code, product_name, price FROM products WHERE id = $product_id");
+            $product = $result->fetch_object();
+            $cost = $product->price * $quantity;
+            $total += $cost;
 
-        echo '<tr class="total-row">';
-        echo '<td colspan="3" align="right">Total</td>';
-        echo '<td>'.$total.'</td>';
-        echo '</tr>';
+            echo '<tr>';
+            echo '<td>' . $product->product_code . '</td>';
+            echo '<td>' . $product->product_name . '</td>';
+            echo '<td>' . $quantity . '</td>';
+            echo '<td>' . $cost . '</td>';
+            echo '</tr>';
+        }
+        echo '<tr><td colspan="3" class="total-row">Total: </td><td>' . $total . '</td></tr>';
         echo '</table>';
-    } else {
-        echo '<p>Your cart is empty. <a href="products.php">Go back to products.</a></p>';
     }
     ?>
 
-    <!-- Checkout Form -->
-    <h3>Delivery and Payment Information</h3>
-    <form action="payment.php" method="POST">
-        <!-- Pickup or Delivery Option -->
-        <div class="radio-buttons">
-            <label>Choose Pickup or Delivery:</label><br>
-            <input type="radio" name="order_type" value="Collect" id="collect" onclick="toggleAddressFields()" required> Collect
-            <input type="radio" name="order_type" value="Delivery" id="delivery" onclick="toggleAddressFields()" required> Delivery
-        </div>
-
-        <!-- Address Fields (shown only if 'Delivery' is selected) -->
-        <div id="addressFields" style="display:none;">
-            <label for="name">Full Name:</label>
-            <input type="text" name="name" id="name">
-
-            <label for="address">Address:</label>
-            <input type="text" name="address" id="address">
-
-            <label for="city">Village:</label>
-            <input type="text" name="city" id="city">
-
-            <label for="mobile_number">Mobile Number:</label>
-            <input type="tel" name="mobile_number" id="mobile_number" placeholder="Enter your mobile number" required pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number">
-        </div>
-
-        <!-- Payment Method -->
-        <label for="payment">Payment Method:</label>
+    <form method="POST">
+        <h3>Billing Details</h3>
+        <label for="name">Full Name</label>
+        <input type="text" name="name" required>
+        
+        <label for="number">Mobile Number</label>
+        <input type="tel" name="number" required>
+        
+        <label for="email">Email Address</label>
+        <input type="text" name="email" required>
+        
+        <label for="payment_method">Payment Method</label>
         <select name="payment_method">
-            <option value="PayFast">PayFast</option>
-            <option value="Credit Card">Credit Card</option>
+            <option value="credit_card">Credit Card</option>
             <option value="paypal">PayPal</option>
-            <option value="bank_transfer">Bank Transfer</option>
         </select>
 
-        
-        <!-- Proceed to Payment -->
-        <input type="hidden" name="total_cost" value="<?php echo $total; ?>">
-        <input type="submit" value="Proceed to Payment" class="button">
+        <div class="radio-buttons">
+            <label><input type="radio" name="delivery_method" value="pickup"> Pickup</label>
+            <label><input type="radio" name="delivery_method" value="delivery" checked> Delivery</label>
+        </div>
+
+        <div id="addressFields">
+            <label for="flat">Flat/House Number</label>
+            <input type="text" name="flat" required>
+
+            <label for="street">Street</label>
+            <input type="text" name="street" required>
+
+            <label for="city">City</label>
+            <input type="text" name="city" required>
+
+            <label for="state">State</label>
+            <input type="text" name="state" required>
+
+            <label for="country">Country</label>
+            <input type="text" name="country" required>
+
+            <label for="pin_code">Pin Code</label>
+            <input type="text" name="pin_code" required>
+        </div>
+
+        <input type="submit" name="order" value="Place Order" class="button">
     </form>
 </div>
 
-
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2024 Mafikeng Digital Innovation Hub. All rights reserved.</p>
-            <ul class="footer-links">
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Service</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
-        </div>
-    </footer>
-
-   
-    <script>
-    // Toggle visibility of address fields
-    function toggleAddressFields() {
-        var deliveryOption = document.getElementById('delivery');
-        var addressFields = document.getElementById('addressFields');
-        addressFields.style.display = deliveryOption.checked ? 'block' : 'none';
-    }
-
-    // Real-time total update using AJAX
-    function updateCartTotal() {
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'checkout.php', true);
-        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // Update the total cost on the page
-                document.getElementById('total-cost').innerHTML = xhr.responseText;
-                document.getElementById('total_cost').value = xhr.responseText; // Update hidden input for form submission
-            }
-        };
-        xhr.send('update_cart=true');
-    }
-
-    // Call the updateCartTotal function when the page loads
-    window.onload = function() {
-        updateCartTotal();
-    };
-</script>
-
-    </script>
+<div class="footer">
+    <div class="footer-content">
+        <ul class="footer-links">
+            <li><a href="privacy-policy.php">Privacy Policy</a></li>
+            <li><a href="terms.php">Terms & Conditions</a></li>
+        </ul>
+    </div>
+</div>
 </body>
 </html>
