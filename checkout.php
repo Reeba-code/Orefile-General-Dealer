@@ -2,17 +2,15 @@
 session_start();
 include 'config.php'; 
 
-
-// Session starts then checks if the user is logged in
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit();
 }
 
-// Initialize total amount
+
 $total = 0;
 
-// Real-time cart update via AJAX
+
 if (isset($_POST['update_cart'])) {
     if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
         foreach ($_SESSION['cart'] as $product_id => $quantity) {
@@ -28,7 +26,7 @@ if (isset($_POST['update_cart'])) {
     exit();  
 }
 
-// Handle form submission for order
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order'])) {
     $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
     $number = filter_var($_POST['number'], FILTER_SANITIZE_STRING);
@@ -41,24 +39,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order'])) {
                filter_var($_POST['country'], FILTER_SANITIZE_STRING) .' - '. 
                filter_var($_POST['pin_code'], FILTER_SANITIZE_STRING);
     
-    // Assuming $user_id is retrieved from session or database based on logged in user
+   
     $user_id = $_SESSION['user_id']; // Example; ensure you have the user ID in the session
 
-    // Check if cart has items
+
     if (!empty($_SESSION['cart'])) {
         // Insert order into the orders table
         $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, address, total_products, total_price) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
         
-        // Calculate total products
+       
         $total_products = array_sum($_SESSION['cart']);
-        $total_price = 0; // To calculate total price later
+        $total_price = 0; 
 
         $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $total_price]);
 
-        // Get last inserted order ID
+     
         $order_id = $conn->lastInsertId();
 
-        // Insert items into the order_items table
+       
         foreach ($_SESSION['cart'] as $product_id => $quantity) {
             $result = $mysqli->query("SELECT price FROM products WHERE id = $product_id");
             if ($result) {
@@ -73,14 +71,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order'])) {
             }
         }
 
-        // Update total price in the orders table
+      
         $update_order = $conn->prepare("UPDATE orders SET total_price = ? WHERE id = ?");
         $update_order->execute([$total_price, $order_id]);
 
-        // Clear the cart
+    
         unset($_SESSION['cart']);
 
-        // Redirect to payment page
+     
         header("Location: payment.php");
         exit();
     } else {
