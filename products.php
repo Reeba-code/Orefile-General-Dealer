@@ -15,6 +15,7 @@ include 'components/connect.php';
     <link href="https://fonts.googleapis.com/css2?family=Baskerville+SC:wght@400;700&display=swap" rel="stylesheet">
     <title>Products </title>
     <style>
+     
         * {
             margin: 0;
             padding: 0;
@@ -23,35 +24,35 @@ include 'components/connect.php';
         }
 
         .top-bar {
-            background-color: #003300;
-            padding: 15px 20px;
-            position: fixed;
+            background-color: #003300; 
+            padding: 15px 20px; 
+            position: fixed; 
             top: 0;
-            width: 100%;
-            z-index: 1000;
+            width: 100%; 
+            z-index: 1000; 
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .top-bar .title-area h1 a {
-            color: #fff;
-            text-decoration: none;
+            color: #fff; 
+            text-decoration: none; 
             font-size: 2em;
-            font-weight: bold;
+            font-weight: bold; 
         }
 
         .top-bar-section ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
+            list-style: none; 
+            display: flex; 
+            gap: 20px; 
         }
 
         .top-bar-section ul li a {
             color: #fff;
             text-decoration: none;
-            padding: 10px 20px;
-            transition: background-color 0.3s;
+            padding: 10px 20px; 
+            transition: background-color 0.3s; 
             border-radius: 5px;
         }
 
@@ -60,6 +61,7 @@ include 'components/connect.php';
             background-color: #9a1e1e;
         }
 
+        
         @media only screen and (max-width: 768px) {
             .top-bar .top-bar-section {
                 display: none;
@@ -74,76 +76,139 @@ include 'components/connect.php';
             }
 
             .top-bar .toggle-topbar {
-                display: block;
+                display: block; 
             }
         }
 
-        .product-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin: 0 auto;
-            padding: 20px;
-            max-width: 1200px;
-        }
 
-        .product-card {
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-width: 300px;
-            flex: 1 1 300px;
-            text-align: center;
-            transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            margin-top: 100px;
-        }
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
+    justify-content: center;
+    margin: 0 auto; 
+    padding: 20px;
+    max-width: 1200px; 
+}
 
-        .product-card:hover {
-            transform: scale(1.05);
-        }
 
-        .product-card img {
-            max-width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 5px;
-            margin-bottom: 15px;
-        }
+.product-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px; 
+    flex: 1 1 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    margin-top: 100px;
+}
 
-        .add-to-cart-btn {
-            background-color: #003300;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 1em;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-            text-decoration: none;
-        }
 
-        .add-to-cart-btn:hover {
-            background-color: #9a1e1e;
-        }
+.product-card:hover {
+    transform: scale(1.05);
+}
 
-        .notification {
+
+.product-card img {
+    max-width: 100%;
+    height: 200px; 
+    object-fit: cover; 
+    border-radius: 5px;
+    margin-bottom: 15px; 
+}
+
+
+.add-to-cart-btn {
+    background-color: #003300; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    text-decoration: none; 
+}
+
+
+.add-to-cart-btn:hover {
+    background-color: #9a1e1e; 
+}
+
+
+.notification {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #9a1e1e;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: none; 
+    z-index: 1000;
+}
+
+.view-cart-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #003300;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none; 
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-cart-btn i {
+    margin-right: 10px;
+}
+
+
+
+
+@media (min-width: 768px) {
+    .product-card {
+        flex: 1 1 calc(15% - 20px);
+        max-width: 100%;
+    }
+    .product img {
+              width: 100%;
+              height: auto;
+              display: block;
+          }
+}
+
+@media (max-width: 767px) {
+    .product-card {
+        flex: 1 1 calc(50% - 20px); 
+    }
+}
+
+ 
+   .notification {
             position: fixed;
-            top: 10px;
+            top: 100px;
             right: 10px;
             background-color: #9a1e1e;
             color: white;
             padding: 10px;
             border-radius: 5px;
-            display: none;
+            display: none; 
             z-index: 1000;
         }
 
+        
         .view-cart-btn {
             position: fixed;
             bottom: 20px;
@@ -154,35 +219,9 @@ include 'components/connect.php';
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            display: none;
+            display: none; 
             z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
-
-        .view-cart-btn i {
-            margin-right: 10px;
-        }
-
-        @media (min-width: 768px) {
-            .product-card {
-                flex: 1 1 calc(15% - 20px);
-                max-width: 100%;
-            }
-            .product img {
-                width: 100%;
-                height: auto;
-                display: block;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .product-card {
-                flex: 1 1 calc(50% - 20px);
-            }
-        }
-
         .footer {
             background-color: #003300;
             color: white;
@@ -262,6 +301,7 @@ include 'components/connect.php';
         ?>
     </div>
 
+
 <div class="footer">
     <div class="footer-content">
         <ul class="footer-links">
@@ -276,6 +316,7 @@ include 'components/connect.php';
             event.preventDefault(); 
             const url = event.target.href;
 
+            
             fetch(url)
                 .then(response => {
                     if (response.ok) {
@@ -283,6 +324,7 @@ include 'components/connect.php';
                     }
                 });
 
+          
             document.getElementById('viewCartBtn').style.display = 'block';
         }
 
