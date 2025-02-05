@@ -1,29 +1,41 @@
 <?php
-session_start(); 
-include 'config.php';
-include 'components/connect.php'; 
+$servername = "localhost";
+$username = "root"; 
+$password = ""; 
+$dbname = "shop_db";
 
-function fetchProductsByCategory($category) {
-    global $conn;
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+   
+    $stmt = $conn->prepare("SELECT DISTINCT product_category FROM products");
+    $stmt->execute();
+    $categories = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-    if (!$conn) {
-        die("Database connection failed");
+    $predefinedCategories = ['sales', 'top picks', 'new'];
+
+    $categories = array_unique(array_merge($predefinedCategories, $categories));
+
+    if (empty($categories)) {
+        $categories = []; 
     }
 
-    $stmt = $conn->prepare("SELECT * FROM products WHERE category = :category");
-    $stmt->bindParam(':category', $category);
-    $stmt->execute();
-
-    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $products; 
-}
-
-$categories = ['sales', 'top picks', 'new'];
-$productsByCategory = [];
-foreach ($categories as $category) {
-    $productsByCategory[$category] = fetchProductsByCategory($category);
+    $productsByCategory = [];
+    foreach ($categories as $category) {
+       
+        $stmt = $conn->prepare("SELECT * FROM products WHERE product_category = :category");
+        $stmt->bindParam(':category', $category);
+        $stmt->execute();
+        $productsByCategory[$category] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+} catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
 }
 ?>
+
+
+
 
 <!doctype html>
 <html lang="en">
@@ -102,7 +114,6 @@ foreach ($categories as $category) {
             width: 90%; 
         }
     }
-
     
     .hero-list-group-container {
         display: flex;
@@ -179,7 +190,6 @@ foreach ($categories as $category) {
             <button class="btn btn-outline-dark">Clearance</button>
         </div>
 
-    
         <div class="hero-list-group-container">
             <div class="hero-image"></div>
             <div class="col-md-3">
@@ -200,28 +210,34 @@ foreach ($categories as $category) {
         </div>
 
         <div class="row mt-4">
-            <div class="col-md-9">
-                <?php foreach ($categories as $category): ?>
-                    <h2 class="mt-5"><?php echo ucfirst($category); ?> Products</h2>
-                    <div class="product-grid">
-                        <?php if (!empty($productsByCategory[$category])): ?>
-                            <?php foreach ($productsByCategory[$category] as $product): ?>
-                                <div class="product-item">
-                                    <h3><?php echo htmlspecialchars($product['product_name']); ?></h3>
-                                    <img src="images/products/<?php echo htmlspecialchars($product['product_img_name']); ?>" class="img-fluid" alt="<?php echo htmlspecialchars($product['product_desc']); ?>">
-                                    <p><?php echo htmlspecialchars($product['product_desc']); ?></p>
-                                    <p>Product Code: <?php echo htmlspecialchars($product['product_code']); ?></p>
-                                    <p>Price: R<?php echo number_format($product['price'], 2); ?></p>
-                                </div>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <p>No products found in this category.</p>
-                        <?php endif; ?>
-                    </div>
-                    <a href="category_page.php?category=<?php echo urlencode($category); ?>" class="btn btn-primary mt-3">View More</a>
-                <?php endforeach; ?>
-            </div>
-        </div>
+    <div class="col-md-9">
+        <?php if (!empty($categories)): ?>
+            <?php foreach ($categories as $category): ?>
+                <h2 class="mt-5"><?php echo ucfirst($category); ?> Products</h2>
+
+                <div class="product-grid">
+                    <?php if (!empty($productsByCategory[$category])): ?>
+                        <?php foreach ($productsByCategory[$category] as $product): ?>
+                            <div class="product-item">
+                                <h3><?php echo htmlspecialchars($product['product_name']); ?></h3>
+                                <img src="images/products/<?php echo htmlspecialchars($product['product_img_name']); ?>" class="img-fluid" alt="<?php echo htmlspecialchars($product['product_desc']); ?>">
+                                <p><?php echo htmlspecialchars($product['product_desc']); ?></p>
+                                <p>Product Code: <?php echo htmlspecialchars($product['product_code']); ?></p>
+                                <p>Price: R<?php echo number_format($product['price'], 2); ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>No products found in this category.</p>
+                    <?php endif; ?>
+                </div>
+                <a href="category_page.php?category=<?php echo urlencode($category); ?>" class="btn btn-primary mt-3">View More</a>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No categories available at the moment.</p>
+        <?php endif; ?>
+    </div>
+</div>
+
     </main>
 
     <footer class="footer mt-5">
@@ -231,21 +247,18 @@ foreach ($categories as $category) {
                 <li class="list-inline-item"><a href="about.php">About</a></li>
                 <li class="list-inline-item"><a href="products.php">Products</a></li>
                 <li class="list-inline-item"><a href="contact.php">Contact</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
             </ul>
-            <p class="text-white">© 2024 Orefile General Dealer - All rights reserved</p>
+            <p>&copy; 2025 Orefile General Dealer | All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function toggleLoginOptions() {
-            var loginOptions = document.getElementById("loginOptions");
-            if (loginOptions.style.display === "none") {
-                loginOptions.style.display = "block";
-            } else {
-                loginOptions.style.display = "none";
-            }
+            const loginOptions = document.getElementById('loginOptions');
+            loginOptions.style.display = (loginOptions.style.display === 'none') ? 'block' : 'none';
         }
+
         function login(userType) {
             if (userType === 'user') {
                 window.location.href = 'user_login.php';
@@ -254,5 +267,7 @@ foreach ($categories as $category) {
             }
         }
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
